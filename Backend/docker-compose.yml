@@ -1,0 +1,39 @@
+services:
+  #contenedor de la bd, organiza como actuara y guardara datos
+  db:
+    image: postgres:16-alpine #dice que utiliza ese sistema
+    container_name: municipio_db #nombre el nombre de la  bd
+    restart: unless-stopped #Le indica a Docker que mantenga siempre encendido este contenedor. Si el contenedor se cae por un error, o si reinicias la computadora, Docker lo volverá a levantar automáticamente, a menos que tú lo hayas detenido manualmente con el comando
+    environment: #define las variables de entono para configurar el post
+      POSTGRES_DB: municipio_incidencias
+      POSTGRES_USER: postgres #crea el usuario administrador con el que la API se autenticara
+      POSTGRES_PASSWORD: postgres #x2
+    ports:
+    - "5432:5432" # es el mapeo de puertos entre computadora fisica (Host) y el contenedor.
+    volumes:
+      - db_data:/var/lib/postgresql/data #cuida los datos y los guarda en un "pendrive virtual"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: Backend/Dockerfile
+    container_name: municipio_api
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=municipio_incidencias;Username=postgres;Password=postgres"
+      Jwt__Key: "CAMBIAR_ESTA_CLAVE_POR_UNA_PROPIA_DE_AL_MENOS_32_CARACTERES"
+    ports:
+      - "8080:8080"
+
+volumes:
+  db_data:

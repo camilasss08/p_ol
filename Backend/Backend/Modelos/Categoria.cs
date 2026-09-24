@@ -1,0 +1,21 @@
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Backend.Modelos
+{
+    public class Categoria
+    {
+        [Key]
+        [Column("id_categoria")]
+        public int Id { get; set; }
+        [Column("nombre")]
+        public string Nombre { get; set; } = string.Empty; //es campo obligatorio
+        [Column("descripcion")]
+        public string Descripcion { get; set; } = string.Empty; //es campo obligatorio
+
+        public ICollection<Incidencia> Incidencias { get; set; } = new List<Incidencia>(); //una categoria puede ser para muchas incidencias
+
+
+
+    }
+}
