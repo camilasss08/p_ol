@@ -32,11 +32,11 @@ namespace Backend.Modelos
         [Column("id_usuario")]
         public int UsuarioId { get; set; } //FK, el num puro
         [ForeignKey(nameof(UsuarioId))]
-        public Usuario? Usuario { get; set; } = new Usuario(); //obj completo
+        public Usuario? Usuario { get; set; }  //obj completo
         [Column("id_categoria")]
         public int CategoriaId { get; set; } //id FK , el num puro
         [ForeignKey(nameof(CategoriaId))]
-        public Categoria Categoria { get; set; } = new Categoria(); //obj completo
+        public Categoria? Categoria { get; set; } //obj completo
         [Column("id_comentario")]
         public ICollection<Comentarios> Comentarios { get; set; } = new List<Comentarios>(); //una incidencia puede tener muchos comentarios
     }

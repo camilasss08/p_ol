@@ -1,8 +1,5 @@
 ﻿namespace Backend.Modelos;
 
-public enum EstadoIncidencia
-{
-    Pendiente,
-    EnProceso,
-    Resuelta
+public enum EstadoIncidencia {
+    Pendiente, EnProceso, Resuelto, Rechazado
 }

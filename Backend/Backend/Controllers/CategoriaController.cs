@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc; //Avisa que utiliza el framework de ASP.NET Core para crear controladores y manejar solicitudes HTTP.
-using Backend.Data; //Avisa que utiliza el espacio de nombres Backend.Data, que contiene la clase AppDbContext, que se utiliza para interactuar con la base de datos.
+﻿using Backend.Data; //Avisa que utiliza el espacio de nombres Backend.Data, que contiene la clase AppDbContext, que se utiliza para interactuar con la base de datos.
+using Backend.Modelos;
+using Microsoft.AspNetCore.Mvc; //Avisa que utiliza el framework de ASP.NET Core para crear controladores y manejar solicitudes HTTP.
+using Microsoft.EntityFrameworkCore;
 namespace Backend.Controllers
 {
     [ApiController] //Avisa que la clase es un controlador de API y que maneja solicitudes HTTP y devuelve respuestas HTTP.
@@ -12,6 +14,14 @@ namespace Backend.Controllers
             _context = context;//guarda la instancia de AppDbContext en la variable _context para que pueda ser utilizada en los métodos del controlador.
             
         }
+        [HttpGet]//nos especifica que este método maneja solicitudes HTTP GET, lo que significa que se utiliza para obtener datos del servidor.
+        public async Task<ActionResult<IEnumerable<Categoria>>> GetCategorias()
+        {
+            return await _context.Categoria.ToListAsync();//Devuelve una lista de todas las categorías en la base de datos. Utiliza el método ToListAsync() para obtener los datos de forma asincrónica.
+
+        }
+
+        //Ahora va a devolver una lista con todas las categorías que hay en la base de datos, para eso se utiliza el método ToListAsync() 
 
     }
 }

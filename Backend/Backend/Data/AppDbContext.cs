@@ -14,5 +14,30 @@ namespace Backend.Data
         public DbSet<Incidencia> Incidencias { get; set; }
         public DbSet<Comentarios> Comentarios { get; set; }
         public DbSet<Categoria> Categoria { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // El enum Estado se guarda como texto, no como número
+            modelBuilder.Entity<Incidencia>()
+                .Property(i => i.Estado)
+                .HasConversion<string>();
+
+            // El email de cada usuario tiene que ser único
+            modelBuilder.Entity<Usuario>()
+                .HasIndex(u => u.Correo)
+                .IsUnique();
+
+            // Seed inicial de categorías
+            modelBuilder.Entity<Categoria>().HasData(
+                new Categoria { Id = 1, Nombre = "Alumbrado público", Descripcion = "Luminarias apagadas o dañadas" },
+                new Categoria { Id = 2, Nombre = "Bacheo y calles", Descripcion = "Pozos y roturas de pavimento" },
+                new Categoria { Id = 3, Nombre = "Residuos", Descripcion = "Basurales o falta de recolección" },
+                new Categoria { Id = 4, Nombre = "Arbolado urbano", Descripcion = "Poda o caída de ramas" },
+                new Categoria { Id = 5, Nombre = "Semáforos y señalización", Descripcion = "Semáforos fuera de servicio" },
+                new Categoria { Id = 6, Nombre = "Otros", Descripcion = "Otras incidencias urbanas" }
+            );
+        }
     }
-}//relacionamos las clases con la base de datos, para que se creen las tablas y se pueda hacer el CRUD( Crear, Leer, Actualizar y Borrar) o manejarlas desde la base de datos, para eso se usa el DbContext de Entity Framework Core.
+}

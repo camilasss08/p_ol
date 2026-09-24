@@ -12,7 +12,7 @@ namespace Backend.Modelos
         [Column("nombre")]
         public string Nombre { get; set; } = string.Empty; //es campo obligatorio
         [Column("descripcion")]
-        public string? Descripcion { get; set; } 
+        public string Descripcion { get; set; } = string.Empty; //es campo obligatorio
 
         public ICollection<Incidencia> Incidencias { get; set; } = new List<Incidencia>(); //una categoria puede ser para muchas incidencias
 

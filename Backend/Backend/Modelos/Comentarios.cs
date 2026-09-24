@@ -18,12 +18,12 @@ namespace Backend.Modelos
         [Column("id_usuario")]
         public int UsuarioId { get; set; } //FK, el num puro
         [ForeignKey(nameof(UsuarioId))]
-        public Usuario? Usuario { get; set; } = new Usuario(); //obj completo
+        public Usuario? Usuario { get; set; }  //obj completo
 
         [Column("id_incidencia")]
         public int IncidenciaId { get; set; } //FK, el num puro
         [ForeignKey(nameof(IncidenciaId))]
-        public Incidencia? Incidencia { get; set; } = new Incidencia(); //obj completo
+        public Incidencia? Incidencia { get; set; }  //obj completo
 
 
     }
