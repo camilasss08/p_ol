@@ -16,7 +16,7 @@ CREATE TABLE usuarios (
 );
 
 -- Categorias de incidencias (Alumbrado, Bacheo, Residuos, etc.)
-CREATE TABLE categoria (
+CREATE TABLE Categoria (
     id_categoria    SERIAL PRIMARY KEY,
     nombre          VARCHAR(60)  NOT NULL,
     descripcion     VARCHAR(200)

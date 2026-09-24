@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Backend.Modelos
 {
-    [Table("Categorias")]
+    [Table("categoria")]
     public class Categoria
     {
         [Key]

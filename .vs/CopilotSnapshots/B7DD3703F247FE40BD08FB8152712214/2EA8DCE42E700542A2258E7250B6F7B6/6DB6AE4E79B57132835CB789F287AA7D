@@ -20,7 +20,7 @@ namespace Backend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Categoria>>> GetCategorias()
         {
-            return await _context.Categoria.ToListAsync();
+            return await _context.Categorias.ToListAsync();
         }
 
         // GET: api/Categoria/5

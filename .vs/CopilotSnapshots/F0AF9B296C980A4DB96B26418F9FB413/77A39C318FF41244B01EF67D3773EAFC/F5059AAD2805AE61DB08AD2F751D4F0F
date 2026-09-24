@@ -19,8 +19,6 @@ namespace Backend.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Categoria>().ToTable("Categorias");
-
             // El enum Estado se guarda como texto, no como número
             modelBuilder.Entity<Incidencia>()
                 .Property(i => i.Estado)
