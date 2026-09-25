@@ -55,7 +55,6 @@ builder.Services.AddOpenApi();
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 // CORS
 builder.Services.AddCors(options =>
 {
@@ -80,7 +79,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// CORS permite que el frontend (que puede estar en otro dominio) haga peticiones al backend
+// CORS permitiendo cualquier origen, cabecera y método
 app.UseCors("PermitirTodo");
 
 // JWT: identifica al usuario

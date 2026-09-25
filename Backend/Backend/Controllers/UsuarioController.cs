@@ -25,7 +25,7 @@ namespace Backend.Controllers
             _context = context;
             _configuration = configuration;
         }
-
+        [Authorize(Roles = "Admin")] //obliga a presentar un JWT valido
         // GET: api/Usuario
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Usuario>>> GetUsuarios()
