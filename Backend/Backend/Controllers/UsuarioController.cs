@@ -11,8 +11,8 @@ using System.Text;
 
 namespace Backend.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
+    [ApiController] //
+    [Route("api/[controller]")]//Indica la direccion 
     public class UsuarioController : ControllerBase
     {
         private readonly AppDbContext _context;
