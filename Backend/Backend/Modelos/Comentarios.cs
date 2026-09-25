@@ -9,6 +9,7 @@ namespace Backend.Modelos
         [Key]
         [Column("id_comentario")]
         public int Id { get; set; }
+        [Required(ErrorMessage = "El texto del comentario es obligatorio.")]
         [Column("texto")]
         public string Texto { get; set; } = string.Empty; //es campo obligatorio
 

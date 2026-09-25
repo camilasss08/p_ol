@@ -10,10 +10,13 @@ namespace Backend.Modelos
         [Key]
         [Column("id_incidencia")]
         public int Id { get; set; }
+        [Required(ErrorMessage = "El título es obligatorio.")]
         [Column("titulo")]
        public string Titulo { get; set; } = string.Empty; //es campo obligatorio
+        [Required(ErrorMessage ="Los detalles son obligatorios")]
         [Column("detalles")]
         public string Detalles { get; set; } = string.Empty; //es campo obligatorio
+        [Required(ErrorMessage ="La direccion es obligatoria")]
         [Column("direccion")]
         public string Direccion{ get; set; }= string.Empty; //es campo obligatorio
         [Column("latitud")]
