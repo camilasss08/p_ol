@@ -46,6 +46,13 @@ Los endpoints pueden probarse y consultarse mediante Swagger.
 Debe ejecutarse mediante Docker (Verificar si esta andando a la hora de utilizar el Backend) levantando el Backend y sus servicios necesarios contenedores.
 
 
+||Integrantes||
+
+Quiroga Nahiara (Frontend)
+Pugliese Violeta (Frontend)
+Sunagua Camila (Backend/DB)
+
+
 
 
 
